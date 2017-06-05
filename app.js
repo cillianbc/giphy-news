@@ -1,5 +1,6 @@
 // (function () {
-  var mainContainer = document.querySelector("#mainContainer");
+
+  var container = document.getElementById('container')
 
   let state = {
 		guardURL : "https://content.guardianapis.com/search?api-key=2b9272f0-a832-4fe2-9fca-c004a4fa70a3",
@@ -13,7 +14,6 @@
 
 
 	function getGuard(){
-      // renderLoading(state,container)
 	  	fetch(state.guardURL).then((response)=>{
 	    return response.json()
 		}).then((callback)=>{
@@ -38,38 +38,38 @@
           }
       )
       }).then(()=>{
-      renderNews(state,mainContainer)})
+        renderNews(state,container)
+      })
     }
 
     function spud(){
       state.articles.forEach((headline)=>{
         giphy(headline)
-        // renderNews(state,mainContainer)
-      })}
-
-
-
-    function renderArticle(article){
-      return `
-				<section class="featured-image">
-		    	<img src="${article.image}" alt="" />
-		    </section>
-		    <section class="article-content">
-		    	<h2>${article.headline}</h3></a>
-		     </section>
-       </section>`
+      })
     }
 
-    function renderNews(data, into) {
+
+    function renderNews(data,into) {
       into.innerHTML = `
         <section id="main" class="wrapper">
-        ${state.complete.map((article)=>{
+        ${data.complete.map((article)=>{
           return `${renderArticle(article)}`
         }).join("")}
         </section>
       `
     }
+    function renderArticle(article){
+      return `
+      <section class="article-content">
+        <h2>${article.headline}</h3></a>
+      </section>
+      <section class="featured-image">
+        <div style="width:100%;height:0;padding-bottom:63%;position:relative;"><iframe src="${article.image}" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="${article.image}">via GIPHY</a></p>
+      </section>
+      `
+    }
 
     getGuard()
+
 
 // })();
