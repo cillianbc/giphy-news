@@ -3,7 +3,7 @@
   var container = document.getElementById('container')
 
   let state = {
-		guardURL : "https://content.guardianapis.com/search?api-key=2b9272f0-a832-4fe2-9fca-c004a4fa70a3",
+		guardURL : "https://crossorigin.me/https://content.guardianapis.com/search?api-key=2b9272f0-a832-4fe2-9fca-c004a4fa70a3",
 	 	articles:[],
     complete:[],
 	 	articleReset:function(){
@@ -28,7 +28,7 @@
 
 
     function giphy(headline){
-      fetch("http://api.giphy.com/v1/gifs/search?q="+headline+"&api_key=dc6zaTOxFJmzC&limit=1").then((response)=>{
+      fetch("https://crossorigin.me/https://api.giphy.com/v1/gifs/search?q="+headline+"&api_key=dc6zaTOxFJmzC&limit=1").then((response)=>{
         return response.json()
       }).then((callback)=>{
         state.complete.push(
