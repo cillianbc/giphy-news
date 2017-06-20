@@ -1,9 +1,9 @@
 // (function () {
 
   var container = document.getElementById('container')
-
+  var apiKey = "99f838b1a5494c3e8ec4ed5de3e550cb";
   let state = {
-		guardURL : "https://crossorigin.me/https://content.guardianapis.com/search?api-key=2b9272f0-a832-4fe2-9fca-c004a4fa70a3",
+		guardURL : "https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=99f838b1a5494c3e8ec4ed5de3e550cb",
 	 	articles:[],
     complete:[],
 	 	articleReset:function(){
@@ -18,8 +18,11 @@
 	    return response.json()
 		}).then((callback)=>{
 	  		state.articleReset()
-	  		callback.response.results.forEach((guard,index)=>{
-	  			state.articles.push(guard.webTitle)
+	  		callback.articles.forEach((guard,index)=>{
+	  			state.articles.push(guard.title)
+          if(index>11){
+            return false
+          }
 	  		})
 			}).then(()=>{
         spud()
