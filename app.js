@@ -54,21 +54,23 @@
 
     function renderNews(data,into) {
       into.innerHTML = `
+      <div class"row">
         <section id="main" class="wrapper">
-        ${data.complete.map((article)=>{
-          return `${renderArticle(article)}`
-        }).join("")}
+          ${data.complete.map((article)=>{
+            return `${renderArticle(article)}`
+          }).join("")}
         </section>
+      </div>
       `
     }
     function renderArticle(article){
-      return `
+      return `<div class="col-md-3">
       <section class="article-content">
-        <h2>${article.headline}</h3></a>
+        <h4>${article.headline}</h4></a>
       </section>
-      <section class="featured-image">
+      <section class="featured-image img-responsive">
         <div style="width:100%;height:0;padding-bottom:63%;position:relative;"><iframe src="${article.image}" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="${article.image}">via GIPHY</a></p>
-      </section>
+      </section></div>
       `
     }
 
