@@ -1,6 +1,6 @@
 // (function () {
 
-  var container = document.getElementById('container')
+  var container = document.getElementById('mainContainer')
   var apiKey = "99f838b1a5494c3e8ec4ed5de3e550cb";
   let state = {
 		guardURL : "https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=99f838b1a5494c3e8ec4ed5de3e550cb",
@@ -31,7 +31,7 @@
 
 
     function giphy(headline){
-      fetch("https://crossorigin.me/https://api.giphy.com/v1/gifs/search?q="+headline+"&api_key=dc6zaTOxFJmzC&limit=1").then((response)=>{
+      fetch("https://api.giphy.com/v1/gifs/search?q="+headline+"&api_key=dc6zaTOxFJmzC&limit=1").then((response)=>{
         return response.json()
       }).then((callback)=>{
         state.complete.push(

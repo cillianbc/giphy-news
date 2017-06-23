@@ -1,7 +1,32 @@
+
+
 section > .col-md-3:nth-child(4n+1) {
     clear: both;
 }
 
 .img-responsive{
   margin: 0 auto;
+}
+#mainContainer{
+
+}
+#footer{
+
+  background-color: #eeeeee;
+}
+.cillian{
+  padding-top:100px;
+}
+.social{
+  width:100%;
+  display: inline-flex;
+  justify-content: space-between;
+}
+.social img{
+  width:50px;
+
+}
+.social li{
+   list-style:none;
+   justify-content: space-between;
 }
