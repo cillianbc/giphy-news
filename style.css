@@ -7,8 +7,9 @@ section > .col-md-3:nth-child(4n+1) {
 .img-responsive{
   margin: 0 auto;
 }
-#mainContainer{
-
+.complete-article{
+  border: 2px black;
+  border-radius: 2px;
 }
 #footer{
 

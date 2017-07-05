@@ -3,7 +3,7 @@
   var container = document.getElementById('mainContainer')
   var apiKey = "99f838b1a5494c3e8ec4ed5de3e550cb";
   let state = {
-		guardURL : "https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=99f838b1a5494c3e8ec4ed5de3e550cb",
+		guardURL : "https://newsapi.org/v1/articles?source=breitbart-news&sortBy=top&apiKey=99f838b1a5494c3e8ec4ed5de3e550cb",
 	 	articles:[],
     complete:[],
 	 	articleReset:function(){
@@ -54,17 +54,17 @@
 
     function renderNews(data,into) {
       into.innerHTML = `
-      <div class"row">
+
         <section id="main" class="wrapper">
           ${data.complete.map((article)=>{
             return `${renderArticle(article)}`
           }).join("")}
         </section>
-      </div>
+
       `
     }
     function renderArticle(article){
-      return `<div class="col-md-3">
+      return `<div class="col-md-3 col-xs-6 complete-article">
       <section class="article-content">
         <h4>${article.headline}</h4></a>
       </section>
