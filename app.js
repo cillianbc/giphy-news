@@ -1,10 +1,25 @@
-// (function () {
+(function () {
 
   var container = document.getElementById('mainContent')
 
   // var apiKey = "99f838b1a5494c3e8ec4ed5de3e550cb";
+  // var firebaseConfig = {
+  //   apiKey: "AIzaSyCePg8Sm5wNMp05c1H6Riad5iT0GIT9A7U",
+  //   authDomain: "giph-news.firebaseapp.com",
+  //   databaseURL: "https://giph-news.firebaseio.com",
+  //   projectId: "giph-news",
+  //   storageBucket: "giph-news.appspot.com",
+  //   messagingSenderId: "506510631263",
+  //   appId: "1:506510631263:web:72b3af351a228e893a16ea",
+  //   measurementId: "G-1SDHY7H2V0"
+  // };
+
+  // firebase.initializeApp(firebaseConfig);
+  // firebase.analytics();
+
+
   let state = {
-    news : "https://newsapi.org/v2/top-headlines?country=au&apiKey=99f838b1a5494c3e8ec4ed5de3e550cb",
+    news : "https://newsapi.org/v2/top-headlines?country=us&apiKey=99f838b1a5494c3e8ec4ed5de3e550cb",
     // reddit:"https://newsapi.org/v2/top-headlines?sources=reddit-r-all&apiKey=99f838b1a5494c3e8ec4ed5de3e550cb",
     // sport:"https://newsapi.org/v2/top-headlines?country=gb&category=sports&apiKey=99f838b1a5494c3e8ec4ed5de3e550cb",
 	 	articles:[],
@@ -22,18 +37,32 @@
 	  	fetch(input).then((response)=>{
 	    return response.json()
 		}).then((callback)=>{
-	  		state.articleReset()
-	  		callback.articles.forEach((article,index)=>{
-	  			state.articles.push(
+      console.log(callback)
+        state.articleReset()
+        let array = callback.articles
+        for (let i = 0; i < array.length; i++) {
+          state.articles.push(
             {
-              title:article.title,
-              url:article.url
+              title:array[i].title,
+              url:array[i].url
             } 
           )
-          if(index>11){
-            return false
-          }
-	  		})
+          if (i === 7) 
+          break;
+        }
+  
+	  		// callback.articles.forEach((article,index)=>{
+	  		// 	// state.articles.push(
+        //   //   {
+        //   //     title:article.title,
+        //   //     url:article.url
+        //   //   } 
+        //   // )
+        //   // console.log(index)
+        //   // if(index>8){
+        //   //   break;
+        //   // }
+	  		// })
 			}).then(()=>{
         spud()
       })
@@ -85,7 +114,7 @@
         <h4>${article.headline}</h4></a>
       </section>
       <section class="featured-image img-responsive">
-        <div style="width:100%;height:0;padding-bottom:63%;position:relative;"><img src="${article.image}" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></img></div><p><a href="${article.image}">via GIPHY</a></p>
+        <div style="width:100%;height:0;padding-bottom:63%;position:relative;"><img src="${article.image}" width="60%" height="60%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></img></div>
       </section></div>
       `
     }
@@ -150,4 +179,4 @@
 //   }
 
 // }
-// })();
+})();
